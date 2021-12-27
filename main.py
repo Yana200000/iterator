@@ -1,3 +1,6 @@
+from nltk import flatten
+from numpy import *
+
 nested_list = [
     ['a', 'b', 'c'],
     ['d', 'e', 'f'],
@@ -16,10 +19,18 @@ class FlatIterator(list):
             raise StopIteration
         else:
             list234.append(self.pop(0))
-        for i in range(0, 3):
-            print(list234[0][i])
+
+        list123 = []
+        for ar in list234[0]:
+            list123.append(ar)
+
+        return list123
 
 
 
+nested_items = []
 for item in FlatIterator(nested_list):
-    print(item)
+    for i in range(0, len(item)):
+        nested_items.append(item[i])
+
+print(nested_items)
